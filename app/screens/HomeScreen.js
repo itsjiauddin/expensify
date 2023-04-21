@@ -38,7 +38,7 @@ export default function HomeScreen() {
   };
   return (
     <ScreenWrapper className="flex-1">
-      <View className="flex-row justify-between items-center p-4">
+      <View className="flex-row justify-between items-center py-2 px-4">
         <Text className="font-bold text-3xl shadow-sm">Expensify</Text>
         <TouchableOpacity
           onPress={handleLogout}

@@ -1,4 +1,11 @@
-import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -22,6 +29,7 @@ export default function LoginScreen() {
       dispatch(setUserLoading(false));
       Toast.show("Login Successfully");
     } catch (error) {
+      dispatch(setUserLoading(false));
       Toast.show(error.message);
     }
   };
@@ -65,14 +73,18 @@ export default function LoginScreen() {
         </View>
 
         <View>
-          <TouchableOpacity
-            onPress={handleSubmit}
-            className="bg-primary-2 my-6 rounded-full p-3 shadow-sm mx-2"
-          >
-            <Text className="text-center text-white text-lg font-bold">
-              Login
-            </Text>
-          </TouchableOpacity>
+          {userLoading ? (
+            <ActivityIndicator size={"large"} color={"#22c55e"} />
+          ) : (
+            <TouchableOpacity
+              onPress={handleSubmit}
+              className="bg-primary-2 my-6 rounded-full p-3 shadow-sm mx-2"
+            >
+              <Text className="text-center text-white text-lg font-bold">
+                Login
+              </Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </ScreenWrapper>

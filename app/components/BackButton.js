@@ -9,7 +9,7 @@ export default function BackButton() {
       onPress={() => navigation.goBack()}
       className="bg-white rounded-full h-8 w-8"
     >
-      <AntDesign name="arrowleft" size={30} />
+      <AntDesign name="arrowleft" size={30} color={"#22c55e"} />
     </TouchableOpacity>
   );
 }

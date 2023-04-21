@@ -1,4 +1,11 @@
-import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
@@ -37,7 +44,7 @@ export default function AddTripScreen() {
     <ScreenWrapper>
       <View className="flex justify-between h-full mx-4">
         <View>
-          <View className="relative mt-5">
+          <View className="relative mt-2">
             <View className="absolute top-0 left-0 z-10">
               <BackButton />
             </View>
@@ -68,14 +75,18 @@ export default function AddTripScreen() {
         </View>
 
         <View>
-          <TouchableOpacity
-            onPress={handleAddTrip}
-            className="bg-primary-3 my-6 rounded-full p-3 shadow-sm mx-2"
-          >
-            <Text className="text-center text-white text-lg font-bold">
-              Add Trip
-            </Text>
-          </TouchableOpacity>
+          {loading ? (
+            <ActivityIndicator size={"large"} color={"#facc15"} />
+          ) : (
+            <TouchableOpacity
+              onPress={handleAddTrip}
+              className="bg-primary-3 my-6 rounded-full p-3 shadow-sm mx-2"
+            >
+              <Text className="text-center text-white text-lg font-bold">
+                Add Trip
+              </Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </ScreenWrapper>
